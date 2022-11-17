@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'front/css/style.css' %}" />
+{% endblock css %} {% block konten %}
+<div class="border-bottom border-light border-2">
+  <h1 class="text-center text-white pt-4">INPUT BARANG</h1>
+</div>
+<div class="border-bottom border-light border-2 pb-4">
+  <div class="container pt-4">
+    <form method="post" class="formulir">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label text-white">Nama Produk</label>
+        <input
+          type="text"
+          class="form-control"
+          name="nama"
+          aria-describedby="emailHelp"
+          value="{{get_produk.nama}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-white">Jumlah</label>
+        <input
+          type="text"
+          name="jumlah"
+          class="form-control"
+          value="{{get_produk.jumlah}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-white">Deskripsi</label>
+        <textarea
+          class="form-control"
+          placeholder="Isi deskripsi"
+          id="floatingTextarea2"
+          style="height: 100px"
+          name="deskripsi"
+        >
+{{get_produk.deskripsi}}</textarea
+        >
+      </div>
+      <div class="mb-3">
+        <label class="form-label text-white">Kategori</label>
+        <select
+          class="form-select form-select-sm"
+          aria-label=".form-select-sm example"
+          name="kategori"
+        >
+          {% for k in kategori %} {% if get_produk.kategori == k %}
+          <option value="{{k.nama}}" selected="selected">{{k.nama}}</option>
+          {% else %}
+          <option value="{{k.nama}}">{{k.nama}}</option>
+          {% endif %} {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary add-btn">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock konten %} {% block javaku %}
+<script src="{% static 'front/js/hello.js' %}"></script>
+{% endblock javaku %}

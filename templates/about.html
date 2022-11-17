@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'front/css/style.css' %}" />
+{% endblock css %} {% block konten %}
+<div class="bg-dark">
+  <div class="container py-5">
+    <div class="row h-100 align-items-center py-5">
+      <div class="col-lg-6 text-white">
+        <h1 class="display-4">About us page</h1>
+        <p class="lead text-white mb-0">Create with love for my self</p>
+        <p class="lead text-white">Snippet by Raenald Syaputra</p>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block">
+        <img
+          src="https://bootstrapious.com/i/snippets/sn-about/illus.png"
+          alt=""
+          class="img-fluid animate__animated animate__backInRight"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock konten %}

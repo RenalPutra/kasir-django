@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'front/css/style.css' %}" />
+{% endblock css %} {% block konten %}
+<div class="border-bottom border-light border-2">
+  <h1 class="text-center text-white pt-4">PRODUK LIST & ALREADY</h1>
+</div>
+<div class="p-5 border-bottom border-light border-2">
+  <table
+    class="table table-dark table-striped animate__animated animate__backInDown"
+  >
+    <thead>
+      <tr>
+        <th scope="col">NO</th>
+        <th scope="col">Produk</th>
+        <th scope="col">Deskripsi</th>
+        <th scope="col">Jumlah</th>
+        <th scope="col">Kategori</th>
+        <th scope="col" class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in produk %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{p.nama}}</td>
+        <td>{{p.deskripsi}}</td>
+        <td>{{p.jumlah}}</td>
+        <td>{{p.kategori}}</td>
+        <td class="d-flex justify-content-center">
+          <a class="btn btn-warning ms-3 bt-up" href="{% url 'update' p.id %}"
+            >Update</a
+          >
+          <a
+            class="btn hub btn-danger ms-3 bt-del{{forloop.counter}}"
+            href="{% url 'delete' p.id %}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="overflow-auto d-flex justify-content-end w-100 pt-3">
+    <a type="button" class="btn btn-success" href="{% url 'add' %}"
+      >+ Tambah Barang</a
+    >
+  </div>
+</div>
+{% endblock konten %} {% block javaku %}
+<script src="{% static 'front/js/hello.js' %}"></script>
+{% endblock javaku %}
